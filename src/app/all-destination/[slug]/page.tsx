@@ -9,6 +9,7 @@ import {
   Star,
   Trash2,
 } from "lucide-react";
+import EditDialougeButton from "./editDialouge";
 
 const destinationDetailsPage = async ({
   params,
@@ -24,20 +25,28 @@ const destinationDetailsPage = async ({
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900">Destination not found</h1>
-          <p className="mt-2 text-gray-600">We couldn&apos;t find a destination matching {slug}.</p>
+          <h1 className="text-2xl font-bold text-gray-900">
+            Destination not found
+          </h1>
+          <p className="mt-2 text-gray-600">
+            We couldn&apos;t find a destination matching {slug}.
+          </p>
         </div>
       </div>
     );
   }
   const data = await res.json();
 
-  const highlights: string[] = Array.isArray(data.highlights) ? data.highlights : [];
-  const benefits: string[] = Array.isArray(data.benefits) ? data.benefits : [
-    "Free cancelation up to 7 days",
-    "Travel Insurance included",
-    "24/7 customer support",
-  ];
+  const highlights: string[] = Array.isArray(data.highlights)
+    ? data.highlights
+    : [];
+  const benefits: string[] = Array.isArray(data.benefits)
+    ? data.benefits
+    : [
+        "Free cancelation up to 7 days",
+        "Travel Insurance included",
+        "24/7 customer support",
+      ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -49,10 +58,11 @@ const destinationDetailsPage = async ({
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition">
+          {/* <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition">
             <Edit2 className="w-4 h-4" />
             Edit
-          </button>
+          </button> */}
+          <EditDialougeButton></EditDialougeButton>
           <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-red-500 rounded-md text-red-500 hover:bg-red-50 transition">
             <Trash2 className="w-4 h-4" />
             Cancel
